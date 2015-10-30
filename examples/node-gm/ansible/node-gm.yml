@@ -1,0 +1,4 @@
+# test playbook
+- hosts: local
+  roles:
+  - { role: bencooling.node, version: 5.x, apt: ['graphicsmagick'] }
