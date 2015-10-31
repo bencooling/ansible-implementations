@@ -1,0 +1,26 @@
+db:
+  image: mariadb
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=wordpress
+    - MYSQL_USER=wordpress
+    - MYSQL_PASSWORD=admin
+
+phpmyadmin:
+  image: nazarpc/phpmyadmin
+  links:
+    - db:mysql
+  ports:
+    - 8081:80
+
+wp:
+  image: wordpress
+  volumes:
+    - <local absolute path>:/var/www/html
+  environment:
+    - WORDPRESS_DB_USER=wordpress
+    - WORDPRESS_DB_PASSWORD=admin
+  links:
+    - db:mysql
+  ports:
+    - 8080:80
