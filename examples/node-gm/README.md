@@ -1,7 +1,7 @@
 # node-gm
 
-Environment: Docker image with both Node + GraphicsMagick running.
-App: Node app returning a GraphicsMagick modified image as a HTTP response
+**Environment:** Docker image with both Node + GraphicsMagick running.  
+**App:** Node app returning a GraphicsMagick modified image as a HTTP response
 
 
 ## commands  
@@ -26,7 +26,3 @@ docker run -d \
 -p 3000:3000 \
 node node-gm /var/www/server.js
 ```
-
-## todo
-
-- Figure out the role installation issue
