@@ -5,12 +5,10 @@ Uses Ansible, Docker and Vagrant to provision and orchestrate different applicat
 
 ## Examples
 
-Application are running within  
-1. A fully provisioned server
-2. Linux containers
-  - Use docker-machine for underlying VM locally
-  - A fully provisioned server is required for production
+Application environments are either
 
+1. A fully provisioned server  
+2. Linux containers
 
 ### Docker
 
