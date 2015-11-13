@@ -1,8 +1,7 @@
 # nginx-node
 
-2 containers:
-1. nginx (reverse proxy for node + static asset server with cors enabled)
-2. node
+**Environment:** Two Docker containers, with nginx reverse proxying to node.
+**App:** Node app returns a basic text response.
 
 
 ## Installation

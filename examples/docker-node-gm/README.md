@@ -1,7 +1,7 @@
 # node-gm
 
-**Environment:** Docker image with both Node + GraphicsMagick running.  
-**App:** Node app returning a GraphicsMagick modified image as a HTTP response
+**Environment:** Single Docker container running Node + GraphicsMagick.
+**App:** Node app returns a GraphicsMagick modified image as a HTTP response.
 
 
 ## commands  
