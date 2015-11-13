@@ -1,0 +1,11 @@
+---
+- hosts: local
+  sudo: yes
+
+  pre_tasks:
+    - name: Update apt cache if needed.
+      apt: update_cache=yes cache_valid_time=3600
+
+  roles:
+  - { role: ubuntu-common, hostname: maestro, sshkeysonly: false, is_vagrant: true }
+  - { role: angstwad.docker_ubuntu, docker_group_members: [ 'vagrant' ] }

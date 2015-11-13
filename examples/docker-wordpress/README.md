@@ -11,8 +11,11 @@ Replace `<local absolute path>` in `docker-compose.yml` with absolute path to lo
 **1. Build containers**  
 Run `docker-compose up -d`
 
-**1. Generous permisssions for Wordpress**  
+**1. Fix Apache 403 Error**  
+- Try either generous perms:
 `docker exec -i wp chmod 777 /var/www/`
+- or modifying user from 1000 to www-data
+`usermod -u 1000 www-data && apachectl restart`
 
 **1. (Optional) import existing data into mysql**  
 `docker exec -i db mysql -uroot -proot wordpress < latest.sql`

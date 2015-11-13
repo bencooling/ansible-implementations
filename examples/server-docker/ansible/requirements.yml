@@ -1,0 +1,8 @@
+- src: git+http://bitbucket.org/bencooling/ansible-role-ubuntu-common
+  version: master
+  name: ubuntu-common
+  path: roles
+
+# from galaxy
+- src: angstwad.docker_ubuntu
+  path: roles
