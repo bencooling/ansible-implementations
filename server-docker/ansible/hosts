@@ -1,7 +1,7 @@
-[local]
+[server-docker]
 127.0.0.1
 
-[local:vars]
+[server-docker:vars]
 ansible_connection=ssh
 ansible_ssh_user=vagrant
 ansible_ssh_private_key_file=/Users/bencooling/projects/github/cm/examples/server-docker/.vagrant/machines/local/virtualbox/private_key

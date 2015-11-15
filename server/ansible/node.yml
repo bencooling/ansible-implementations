@@ -1,0 +1,6 @@
+# test playbook
+- hosts: server
+  roles:
+  - { role: ubuntu-common }
+  - { role: nginx, nginx_conf: nginx.conf }
+  - { role: bencooling.node, version: 5.x }

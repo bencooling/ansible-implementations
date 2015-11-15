@@ -1,6 +1,6 @@
-# configuration management
+# configuration management examples
 
-Uses Ansible, Docker and Vagrant to provision and orchestrate different application environments and server configurations.
+Uses Ansible, Docker and Vagrant to setup application environments in containers or within full server operating systems.
 
 
 ## Examples

@@ -1,0 +1,6 @@
+# test playbook
+- hosts: local
+  sudo: true
+  roles:
+    - { role: deploy }
+  # - { role: deploy, app_repo: 'git@bitbucket.org:bencooling/node-hello-world.git' }

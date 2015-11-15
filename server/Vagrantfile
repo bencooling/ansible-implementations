@@ -8,7 +8,7 @@ Vagrant.configure(2) do |config|
 
   # Add additional box ips here
   {
-    'local' => '192.168.22.81'
+    'server' => '192.168.22.81'
   }.each do |short_name, ip|
 
     # Virtualbox machine name. See: http://stackoverflow.com/a/17864388/100134
@@ -18,7 +18,7 @@ Vagrant.configure(2) do |config|
       host.vm.hostname = "#{short_name}"
       # host.vm.network "forwarded_port", guest: 3000, host: 3000
       # host.vm.synced_folder "www/", "/vagrant/www"
-      host.vm.synced_folder "www/", "/vagrant/www", owner: "www-data", group: "www-data"
+      # host.vm.synced_folder "www/", "/var/www", owner: "www-data", group: "www-data"
     end
 
     # Virtualbox provider settings
@@ -33,8 +33,8 @@ Vagrant.configure(2) do |config|
   # NOTE: Take snapshot of server before running provisioner
   # # Ansible provisioner.
   config.vm.provision "ansible" do |ansible|
-    ansible.limit = "local"
-    ansible.playbook = "ansible/site.yml"
+    ansible.limit = "server"
+    ansible.playbook = "ansible/node.yml"
     ansible.sudo = true
   end
 

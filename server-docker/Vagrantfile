@@ -8,7 +8,7 @@ Vagrant.configure(2) do |config|
 
   # Add additional box ips here
   {
-    'local' => '192.168.22.81'
+    'server-docker' => '192.168.22.81'
   }.each do |short_name, ip|
 
     # Virtualbox machine name. See: http://stackoverflow.com/a/17864388/100134
@@ -32,7 +32,7 @@ Vagrant.configure(2) do |config|
   # NOTE: Take snapshot of server before running provisioner
   # # Ansible provisioner.
   config.vm.provision "ansible" do |ansible|
-    ansible.limit = "local"
+    ansible.limit = "server-docker"
     ansible.playbook = "ansible/docker.yml"
     ansible.sudo = true
   end
