@@ -34,6 +34,8 @@ Uses Ansible, Docker and Vagrant to setup applications in containers or directly
     - limit traffic
     - vagrant issues
     - generate self signed ssl certs
+- App deployment
+  - http and https support
 
 
 ## todo  
