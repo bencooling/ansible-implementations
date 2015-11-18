@@ -1,6 +1,9 @@
-# test playbook
-- hosts: local
+---
+- hosts: server
   sudo: true
   roles:
-    - { role: deploy }
-  # - { role: deploy, app_repo: 'git@bitbucket.org:bencooling/node-hello-world.git' }
+    - { role: deploy,
+        app_tls: true,
+        app_tls_cert: '{{playbook_dir}}/ssl/hello_world.pem',
+        app_tls_key: '{{playbook_dir}}/ssl/hello_world.key'
+      }

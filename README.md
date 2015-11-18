@@ -1,16 +1,9 @@
 # configuration management examples
 
-Uses Ansible, Docker and Vagrant to setup application environments in containers or within full server operating systems.
+Uses Ansible, Docker and Vagrant to setup applications in containers or directly on VPS/bare metal servers.
 
 
-## Examples
-
-Application environments are either
-
-1. A fully provisioned server  
-2. Linux containers
-
-### Docker
+## docker
 
 **docker-ngnix-node**  
 - nginx handles static assets, reverse proxies non asset requests to node
@@ -25,16 +18,24 @@ Application environments are either
 - node + graphicsmagick Docker image built using Ansible playbook
 
 
-### Server
+## server
 
-**server-docker**
+**server-docker**  
 - Ansible playbook to build a fully provisioned server running Docker
 
-**server (Coming soon)**  
-- Ansible playbook to provision server + deploy applications (Dockerised and monolithic)
-- Sample node & wordpress app
+**server**  
+- Ansible playbooks to provision server + git deployment of sample node app
+- Server provisioning:
+  - firewall
+  - intrusion prevention
+  - ssl
+  - timezone
+  - additional config for local VM:
+    - limit traffic
+    - vagrant issues
+    - generate self signed ssl certs
 
 
-## TODO
-
-- [Add deployment ansible playbook, roles](https://developer.rackspace.com/blog/dev-to-deploy-with-docker-machine-and-compose/)
+## todo  
+- Add wordpress app to server
+- Add Mongo + RabbitMQ to node app in server

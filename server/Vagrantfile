@@ -4,38 +4,31 @@
 Vagrant.configure(2) do |config|
 
   config.vm.box = 'ubuntu/trusty64'
-  config.vm.box_check_update = false # explicitly check for updates with `vagrant box outdated`
-
-  # Add additional box ips here
-  {
-    'server' => '192.168.22.81'
-  }.each do |short_name, ip|
-
-    # Virtualbox machine name. See: http://stackoverflow.com/a/17864388/100134
-    config.vm.define "#{short_name}" do |host|
-      host.vm.network "private_network", ip: ip
-      # host.vm.network "private_network", type: :dhcp #172.28.128.3
-      host.vm.hostname = "#{short_name}"
-      # host.vm.network "forwarded_port", guest: 3000, host: 3000
-      # host.vm.synced_folder "www/", "/vagrant/www"
-      # host.vm.synced_folder "www/", "/var/www", owner: "www-data", group: "www-data"
-    end
-
-    # Virtualbox provider settings
-    config.vm.provider "virtualbox" do |vb, override|
-      vb.name = "#{short_name}"
-      vb.memory = 4096
-      vb.cpus = 4
-    end
-
+  config.vm.box_check_update = false
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 512 # 2048 = 4GB
+    vb.cpus = 1
   end
 
-  # NOTE: Take snapshot of server before running provisioner
-  # # Ansible provisioner.
-  config.vm.provision "ansible" do |ansible|
-    ansible.limit = "server"
-    ansible.playbook = "ansible/node.yml"
-    ansible.sudo = true
+  config.vm.define "server" do |server|
+    server.vm.hostname = "server"
+    server.vm.network "private_network", ip: "192.168.200.100"
+    config.vm.provider "virtualbox" do |vb|
+      vb.name = "server"
+    end
+    server.vm.provision "ansible" do |ansible|
+      ansible.limit = "server"
+      ansible.playbook = "ansible/node.yml"
+      ansible.sudo = true
+    end
+  end
+
+  config.vm.define "attacker" do |attacker|
+    attacker.vm.hostname = "attacker"
+    attacker.vm.network "private_network", ip: "192.168.200.150"
+    config.vm.provider "virtualbox" do |vb|
+      vb.name = "attacker"
+    end
   end
 
 end
