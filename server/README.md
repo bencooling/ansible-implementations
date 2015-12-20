@@ -14,7 +14,7 @@ To be used as a staging type server. For application development use host OS or 
 ## install  
 
 **install ansible roles**  
-`cd ansible && ansible-galaxy install -r requirements.yml`
+`cd ansible && ansible-galaxy install -r requirements-node.yml`
 
 **install vm**  
 `cd ../ && vagrant up`

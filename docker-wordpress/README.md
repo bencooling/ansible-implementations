@@ -14,7 +14,9 @@ Run `docker-compose up -d`
 **1. Fix Apache 403 Error**  
 - Try either generous perms:
 `docker exec -i wp chmod 777 /var/www/`
+
 - or modifying user from 1000 to www-data
+`docker exec -it thelens_wp_1 /bin/bash`
 `usermod -u 1000 www-data && apachectl restart`
 
 **1. (Optional) import existing data into mysql**  

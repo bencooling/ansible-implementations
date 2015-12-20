@@ -1,0 +1,36 @@
+---
+- hosts: jenkins
+  sudo: yes
+  tasks:
+  - name: install git
+    apt: pkg=git state=latest
+    sudo: true
+  roles:
+    # lock down server
+    - { role: ubuntu-common,
+        is_vagrant: true,
+        sys: true,
+        sys_hostname: server,
+        fail2ban: true,
+        fail2ban_dest_email: "office@bcooling.com.au",
+        sshd: true,
+        sshd_max_auth_tries: 2,
+        ufw: true,
+        ufw_reject: {
+          attacker: { port: 80, ip: 192.168.200.150 }
+        }
+      }
+    # generate self-signed certificates
+    # - { role: ssl-cert,
+    #     ssl_cert_name: "jenkins",
+    #     ssl_cert_country: "AU",
+    #     ssl_cert_locality: "Gold Coast",
+    #     ssl_cert_organization: "bencooling",
+    #     ssl_cert_state: "Queensland"
+    #   }
+    # http proxy server
+    - { role: nginx, nginx_conf: nginx.conf }
+    # jenkins application
+    - { role: geerlingguy.jenkins,
+        jenkins_http_port: 3000
+      }

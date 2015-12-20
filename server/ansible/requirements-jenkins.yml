@@ -1,0 +1,31 @@
+# from galaxy
+- src: geerlingguy.jenkins
+  path: roles
+
+- src: geerlingguy.java
+  path: roles
+
+# from bitbucket
+- src: git@bitbucket.org:bencooling/ansible-role-ssl-cert.git
+  version: master
+  scm: git # force galaxy to download bitbucket over ssh
+  name: ssl-cert
+  path: roles
+
+- src: git@bitbucket.org:bencooling/ansible-role-ubuntu-common.git
+  version: master
+  scm: git # force galaxy to download bitbucket over ssh
+  name: ubuntu-common
+  path: roles
+
+- src: git@bitbucket.org:bencooling/ansible-role-nginx.git
+  version: master
+  scm: git # force galaxy to download bitbucket over ssh
+  name: nginx
+  path: roles
+
+- src: git@bitbucket.org:bencooling/ansible-role-deploy.git
+  version: master
+  scm: git # force galaxy to download bitbucket over ssh
+  name: deploy
+  path: roles
